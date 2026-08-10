@@ -24,7 +24,7 @@ public class DemoCoins {
             dp[i][0] = 0;
         }
         for (int j = 1; j <= amount; j++) {
-            dp[0][j] = Integer.MAX_VALUE;
+            dp[0][j] = amount + 1;
         }
         for (int i = 1; i <= n; i++) {
             int coin = nums[i - 1];
@@ -36,23 +36,21 @@ public class DemoCoins {
                 }
             }
         }
-        return dp[n][m] == Integer.MAX_VALUE ? -1 : dp[n][m];
+        return dp[n][m] == amount + 1 ? -1 : dp[n][m];
     }
 
-    public static int minCoinsOneDemension(int[] nums, int amount) {
+    public static int minCoinsOneDemension(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-        // 考虑无效解
-        Arrays.fill(dp, Integer.MAX_VALUE);
+        // 无效解标识，不要用 Integer.MAX_VALUE，因为后面会整形溢出的
+        Arrays.fill(dp, amount + 1);
         dp[0] = 0;
-        for (int i = 1; i <= nums.length; i++) {
-            int coin = nums[i - 1];
+        for (int coin: coins) {
             for (int j = 1; j <= amount; j++) {
-                if (j >= coin) {
+                if (coin <= j) {
                     dp[j] = Math.min(dp[j], dp[j - coin] + 1);
                 }
             }
         }
-        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
-
+        return dp[amount] == amount + 1 ? -1 : dp[amount];
     }
 }

@@ -49,6 +49,7 @@ class LRU {
         hashMap = new HashMap<>();
         dummyhead = new DListNode(-1, -1);
         dummytail = new DListNode(-1, -1);
+        // 链接
         dummyhead.next = dummytail;
         dummytail.prev = dummyhead;
     }

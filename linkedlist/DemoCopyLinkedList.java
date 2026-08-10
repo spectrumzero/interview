@@ -60,7 +60,6 @@ public class DemoCopyLinkedList {
 
     public static RandomLinkedList deepCopy(RandomLinkedList head) {
         Map<RandomLinkedList, RandomLinkedList> map = new HashMap<>();
-        // 先做出来，拷贝出来。映射的作用？
         RandomLinkedList cur = head;
         while (cur != null) {
             RandomLinkedList node = new RandomLinkedList(cur.val);

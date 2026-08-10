@@ -22,24 +22,22 @@ public class DemoLongestIncrease {
     // nlogn
     public static int lengthGreedy(int[] nums) {
         int[] tmp = new int[nums.length];
-        int len = 0;
-        for (int num : nums) {
-            // 一种二分搜索。二分搜索，就是用两个指针进行移动
-            // 在 tmp 中二分搜索
-            int left = 0, right = len;
-            while (left < right) {
-                int mid = (left + right) / 2;
-                // 在 tmp 中寻找第一个大于或等于 num 的数
-                if (tmp[mid] >= num) {
-                    right = mid;
-                } else {
+        int len = 1;
+        tmp[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            int num = nums[i];
+            int left = 0, right = len - 1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                // 找第一个比 num 大的元素
+                if (tmp[mid] >= num) { // 等于，也要确保这个循环中的更新是正确的。等于的效果最多是替换，不会影响到本次的长度，所以不应该更新 left
+                    right = mid - 1;
+                } else if (tmp[mid] < num){
                     left = mid + 1;
                 }
             }
-            // 并用 num 替代它
             tmp[left] = num;
-            // 这个时候如果发现其实 left 已经越界，说明不是代替，而是 append，因为原来的 tmp 中的所有元素都小于 num
-            if (left == len) {
+            if (left >= len) {
                 len++;
             }
         }

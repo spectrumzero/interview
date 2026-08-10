@@ -41,11 +41,11 @@ public class SlidingWindow {
         res[0] = nums[dq.peek()];
         // [i, i + k -1]
         for (int i = 1; i + k - 1 <= n - 1; i++) {
-            // 只要不是 i - 1，就表示我们已经把 i - 1 poll 出去了；是，则要主动 poll 一次
+            // 只要不是 i - 1，就表示我们已经把 i - 1 poll 出去了，即滑动成功；是，则要主动 poll 一次，确保滑动成功
             if (dq.peek() == i - 1) {
                 dq.pollFirst();
             }
-            while (!dq.isEmpty() && nums[i + k - 1] >= nums[dq.peekLast()]) {
+            while (!dq.isEmpty() && nums[i + k - 1] >= nums[dq.peekLast()]) { // 所以这里光写 > 也可以，前面的最终是会先被剔除掉的
                 dq.pollLast();
             }
             dq.offerLast(i + k - 1);
