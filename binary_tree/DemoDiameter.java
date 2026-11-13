@@ -2,13 +2,28 @@ package binary_tree;
 
 import com.sun.source.tree.Tree;
 
-import java.lang.classfile.attribute.SourceDebugExtensionAttribute;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Scanner;
 
 public class DemoDiameter {
     public static int res;
+
+    public static int diameter(TreeNode root) {
+        maxDepth(root);
+        return res;
+    }
+
+    public static int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+        res = Math.max(leftDepth + rightDepth, res);
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -43,18 +58,4 @@ public class DemoDiameter {
         return root;
     }
 
-    public static int diameter(TreeNode root) {
-        maxDepth(root);
-        return res;
-    }
-
-    public static int maxDepth(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int leftDepth = maxDepth(root.left);
-        int rightDepth = maxDepth(root.right);
-        res = Math.max(leftDepth + rightDepth, res);
-        return Math.max(leftDepth, rightDepth) + 1;
-    }
 }

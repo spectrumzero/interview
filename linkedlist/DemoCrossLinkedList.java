@@ -46,6 +46,7 @@ public class DemoCrossLinkedList {
         scanner.close();
     }
 
+    // 相交链表
     public static int getCross(ListNode l1, ListNode l2) {
         ListNode curA = l1, curB = l2;
         while (curA != curB) {

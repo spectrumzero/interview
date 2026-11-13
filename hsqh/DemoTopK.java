@@ -3,7 +3,7 @@ package hsqh;
 import java.util.*;
 
 // 前 k 个高频元素
-public class TopK {
+public class DemoTopK {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -28,6 +28,7 @@ public class TopK {
         for (int num: nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
+        // 传一个 lambda，自然要有参数
         PriorityQueue<Integer> heap = new PriorityQueue<>((a,b) -> map.get(a) - map.get(b));
         for (int key : map.keySet()) {
             heap.offer(key);

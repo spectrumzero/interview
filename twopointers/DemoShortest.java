@@ -45,7 +45,7 @@ public class DemoShortest {
                     res = curSize;
                     start = left;
                 }
-                // 抹除
+                // 抹除，反方向的，因此是 ++ 而非 --，不然后续就是直接索引溢出
                 count[s.charAt(left)]++;
                 // 破坏平衡
                 if (count[s.charAt(left)] > 0) {

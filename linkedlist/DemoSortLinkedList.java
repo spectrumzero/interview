@@ -50,13 +50,14 @@ public class DemoSortLinkedList {
             }
             cur = cur.next;
         }
+        // 别忘了
         cur.next = l1 == null ? l2 : l1;
         return dummy.next;
     }
 
 
-
     public static ListNode findMid(ListNode head) {
+        // 其实不用 dummy 也可以
         ListNode dummy = new ListNode(-1, head);
         ListNode slow = dummy, fast = head;
         while (fast != null && fast.next != null) {
