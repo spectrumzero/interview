@@ -26,17 +26,14 @@ public class DemoLongestSubstring {
             return res;
         }
         Set<Character> set = new HashSet<>();
-        int start = 0;
+        int left = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (!set.contains(s.charAt(i))) {
-                set.add(s.charAt(i));
-            } else {
-                while (set.contains(s.charAt(i))) {
-                    set.remove(s.charAt(start));
-                    start++;
-                }
-                set.add(s.charAt(i));
+            char c = s.charAt(i);
+            while (!set.isEmpty() && set.contains(c)) {
+                set.remove(s.charAt(left));
+                left++;
             }
+            set.add(c);
             res = Math.max(set.size(), res);
         }
         return res;

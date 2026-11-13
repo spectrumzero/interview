@@ -35,9 +35,10 @@ public class DemoIntervals {
             }
         }
         res.add(new int[] {start, end});
+        // 调用实例方法，toArray
         // 这里。不要默认 Object[]，而是要明确转变为的数组和大小
         // 以及 res 中的元素得是 int[]，而不是 List<>，才能这样转
         return res.toArray(new int[res.size()][]);
-        // return res.toArray(new int[res.size()][]);
+//        return res.toArray(new int[res.size()][2]);
     }
 }

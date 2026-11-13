@@ -37,7 +37,6 @@ public class DemoBFSZigZag {
         boolean flag = true;
         while (!queue.isEmpty()) {
             int size = queue.size();
-            // 可以用，21 以及之后。不过为了兼容，可能写 Deque 接口会更好。
             List<Integer> collect = new LinkedList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
@@ -47,6 +46,7 @@ public class DemoBFSZigZag {
                 if (node.right != null) {
                     queue.offer(node.right);
                 }
+                // 只影响对 collect 的添加顺序
                 if (flag) {
                     collect.add(node.val);
                 } else {

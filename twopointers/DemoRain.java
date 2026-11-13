@@ -22,6 +22,7 @@ public class DemoRain {
             leftMax = Math.max(nums[left], leftMax);
             rightMax = Math.max(nums[right], rightMax);
             if (leftMax < rightMax) {
+                // 只确定一边的水位
                 res += leftMax - nums[left];
                 left++;
             } else {

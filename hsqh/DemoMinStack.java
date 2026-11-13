@@ -21,6 +21,7 @@ class MinStack {
     void push(int val) {
         stack.push(val);
         if (!minStack.isEmpty()) {
+            // 必须是要有等于号的，因为后面有 pop 的逻辑
             if (val <= minStack.peek()) {
                 minStack.push(val);
             }

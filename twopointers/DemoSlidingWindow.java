@@ -2,10 +2,9 @@ package twopointers;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.List;
 import java.util.Scanner;
 
-public class SlidingWindow {
+public class DemoSlidingWindow {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -31,13 +30,14 @@ public class SlidingWindow {
         // 索引，递减，队头最大的
         Deque<Integer> dq = new ArrayDeque<>();
         for (int i = 0; i < k; i++) {
-            // 索引
+            // 索引。isEmpty 不是一次的判断，而是要伴随 poll 持续监控的
             while (!dq.isEmpty() && nums[i] >= nums[dq.peekLast()]) {
                 dq.pollLast();
             }
             // 索引
             dq.offerLast(i);
         }
+        // 返回也是，不是存索引
         res[0] = nums[dq.peek()];
         // [i, i + k -1]
         for (int i = 1; i + k - 1 <= n - 1; i++) {

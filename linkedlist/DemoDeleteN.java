@@ -19,7 +19,9 @@ public class DemoDeleteN {
         StringBuilder sb = new StringBuilder();
         while ( res != null) {
             sb.append(res.val);
-            if (res.next != null) sb.append(" ");
+            if (res.next != null) {
+                sb.append(" ");
+            }
             res = res.next;
         }
         System.out.println(sb);

@@ -1,9 +1,8 @@
 package linkedlist;
 
-import java.util.List;
 import java.util.Scanner;
 
-public class TwoSum {
+public class DemoTwoNum {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
@@ -34,12 +33,13 @@ public class TwoSum {
         scanner.close();
     }
 
+    // 两数相加
     public static ListNode twoSum(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         int carry = 0;
         // 或
-        while (l1 != null || l2 != null) {
+        while (l1 != null || l2 != null || carry != 0) {
             int op1 = l1 == null ? 0 : l1.val;
             int op2 = l2 == null ? 0 : l2.val;
             // 不仅仅要计算进位，还要加上进位
@@ -54,10 +54,6 @@ public class TwoSum {
                 l2 = l2.next;
             }
             cur = cur.next;
-        }
-
-        if (carry != 0) {
-            cur.next = new ListNode(carry);
         }
 
         return dummy.next;

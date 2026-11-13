@@ -14,7 +14,7 @@ public class DemoBFS {
             return;
         }
         StringBuilder stringBuilder = new StringBuilder();
-        for (List<Integer> list: res) {
+        for (List<Integer> list : res) {
             for (int i = 0; i < list.size(); i++) {
                 stringBuilder.append(list.get(i));
                 if (i != list.size() - 1) stringBuilder.append(" ");
